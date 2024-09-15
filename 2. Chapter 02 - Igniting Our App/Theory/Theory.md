@@ -40,6 +40,24 @@ A: `npx` is a Node.js package runner that allows you to execute npm packages wit
 A: 
 - `dependencies`: Packages needed to run rhe app in production (e.g. React).
 
-- `devDependencies`: Packages only required for development (e.g., Parcel, testing tools).
+- `devDependencies`: Packages only required for local evelopment (e.g., Parcel, testing tools).
 
+## Q: What is Tree Shaking?
 
+A: `Tree Shaking` also known as `dead code elimination`, is a feature that automatically removes unused code from the final bundle, reducing the size of the output file. 
+
+## Q: What is Hot Module Replacement?
+
+A: `Hot Module Replacement(HRM)` allows modules to be updated in the browser without a full page reload, preserving application state and speeding up development. 
+
+## Q: List down your favorite 5 superpowers of Parcel and describe any 3 of them in your own words.
+
+- `Zero Configuration`: Parcel requires no setup to get started.
+
+- `Hot Module Replacement(HMR)`: Changes in code are reflected without reloading the page. 
+
+- `Tree Shaking`: Automatically removes unused code from the final bundl. 
+
+- `Minification`: Compresses code to reduce bundle size.
+
+- `Code Splitting`: Automatically splits the code into smaller chunks to load resources as needed.
