@@ -87,4 +87,22 @@ A: `.gitignore` is a file that specifies which files or derectories Git should i
 
 A: `package.json` contains metadata and project dependencies, while `package-lock.json` locks the versions of dependencies to ensure reproducible builds.
 
+## Q: Why should I not modify `package-lock.json`?
 
+A: Modifiying `package-lock.json` can break dependency resolution and cause inconsistencies across environment. This file is auto-generated and ensures precise control over dependency versions. 
+
+## Q: What is `node_modules`? Is it a good idea to push that on Git?
+
+A: `node_modules` contains installed packages, and it is not recommended to push it to Git due to its large size and ease of regeneration via `package.json`.
+
+## Q: What is the `dist` folder?
+
+A: The `dist` folder contains the production-ready, minified version of your application. This folder is used for deployment purposes.
+
+## Q: What is `browserlists`?
+
+A: `Browserslist` is a tool that allows specifying which browsers a project should support, ensuring compatibility across targeted browsers.
+
+## Q: Read about: `^-caret` and `~-tilde`
+`Caret (^)`: Allows updates for patches and minor versions.
+`Tilde (~)`: Allows updates only for patches, locking the minor version.
