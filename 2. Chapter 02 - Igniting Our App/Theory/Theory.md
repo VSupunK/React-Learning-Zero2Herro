@@ -61,3 +61,30 @@ A: `Hot Module Replacement(HRM)` allows modules to be updated in the browser wit
 - `Minification`: Compresses code to reduce bundle size.
 
 - `Code Splitting`: Automatically splits the code into smaller chunks to load resources as needed.
+
+and some of more cool features of Parcel are:
+
+- File Watching Algorithm - written in C++
+- Caching - Faster Builds
+- Image Optimization
+- Minification
+- Bundling
+- Compress
+- Consistent Hashing
+- Code Splitting
+- Differential Bundling - support older browsers
+- Diagnostic
+- Error Handling
+- HTTPs
+- Tree Shaking - remove unused code
+- Different Build for dev and prod bundles
+
+## Q: What is `.gitignore`? What should we add and not add into it?
+
+A: `.gitignore` is a file that specifies which files or derectories Git should ignore. You should add files that are not necessary for source control like n`ode_modules`, .`parcel-cache`, and build artifacts. Avoid adding files critical for the project's structure or configuration. 
+
+## Q: What is the difference between `package.json` and `package-lock.json` files?
+
+A: `package.json` contains metadata and project dependencies, while `package-lock.json` locks the versions of dependencies to ensure reproducible builds.
+
+
