@@ -3,12 +3,13 @@ import ReactDOM from "react-dom/client";
 
 //If we need to add styles in here, we can do it as JS object
 const styleCard = {
+    margin: "5px",
     padding: "5px",
     width: "200px",
     height: "300px",
     padding: "10px",
-    border: "1px solid black",
-    backgroundColor: "yellow"
+    // border: "1px solid black",
+    backgroundColor: "#fff0e0"
 }
 
 //header
@@ -51,6 +52,13 @@ const Body = () => {
             </div>
                 <div className="restaurant-container"> 
                     {/* RestaurantCard */}
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
+                    <RestaurantCard />
                     <RestaurantCard />
                 </div>
             

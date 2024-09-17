@@ -19,12 +19,22 @@
   margin: 10px;
 }
 
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /* .res-card {
   width: 200px;
   height: 300px;
   padding: 10px;
   border: 1px solid black;
 } */
+
+.res-card:hover{
+  border: 1px solid black;
+  cursor: pointer;
+}
 
 .search {
   padding: 10px;
