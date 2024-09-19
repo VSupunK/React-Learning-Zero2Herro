@@ -1,4 +1,5 @@
-import { CDN_URL } from "../utils/constants"
+import { CDN_URL } from "../utils/constants";
+import resList from "../utils/mockData";
 
 //If we need to add styles in here, we can do it as JS object
 const styleCard = {
@@ -17,10 +18,10 @@ const RestaurantCard = (props) => {
     return (
         <div className="res-card" style={styleCard}>
             {/* This image come from as a CDN - Content Delivery Network */}
-            <img className="res-logo" src={
-                { CDN_URL } + cloudinaryImageId
-            }
-            />
+            <img className="res-logo" src=
+                { CDN_URL + cloudinaryImageId }
+                />
+            
 
             {/* <h3>{resData.data.name}</h3>
         <h4>{resData.data.cuisines.join(", ")}</h4>
