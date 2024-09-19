@@ -9,5 +9,7 @@ import Component_Name from 'path';
 
 - `Named` Exprot/ Import
 
+```
 exprot const Component_Name;
 import { Component_Name from } 'path';
+```
