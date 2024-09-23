@@ -27,16 +27,16 @@ const Body = () => {
           );
     };
 
-    if (listOfRestaurants.length === 0) {
-        //return <h1>Loading...</h1>
-        return (
-            //Shimmer UI
-            <Shimmer />
-        )
-    }
+    // //Coditional Rendering
+    // if (listOfRestaurants.length === 0) {
+    //     //return <h1>Loading...</h1>
+    //     return (
+    //         //Shimmer UI
+    //         <Shimmer />
+    //     )
+    // }
 
-
-    return (
+    return (listOfRestaurants.length === 0) ? <Shimmer /> : (
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" 
