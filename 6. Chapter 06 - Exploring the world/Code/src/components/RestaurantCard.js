@@ -14,7 +14,7 @@ const styleCard = {
 const RestaurantCard = (props) => {
     const { resData } = props;
 
-    const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, deliveryTime } = resData?.data;
+    const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, deliveryTime } = resData?.info;
     return (
         <div className="res-card" style={styleCard}>
             {/* This image come from as a CDN - Content Delivery Network */}
