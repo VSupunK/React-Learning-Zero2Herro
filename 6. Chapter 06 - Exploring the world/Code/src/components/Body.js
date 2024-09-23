@@ -1,9 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
 //import resList from "../utils/mockData";
 import { useEffect, useState } from 'react';
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-
     //Local State Variable - useState() -> this is a react hook
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
@@ -21,10 +21,19 @@ const Body = () => {
 
         console.log(json);
         setListOfRestaurants(
+            //Optional Chaining
             json?.data?.success?.cards[1]?.card?.card.gridElements.infoWithStyle
               .restaurants
           );
     };
+
+    if (listOfRestaurants.length === 0) {
+        //return <h1>Loading...</h1>
+        return (
+            //Shimmer UI
+            <Shimmer />
+        )
+    }
 
 
     return (

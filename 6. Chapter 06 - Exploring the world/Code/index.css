@@ -47,3 +47,18 @@
 .filter-btn {
   margin: 15px;
 }
+
+/* for shimmer ui */
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.shimmer-card {
+  width: 200px;
+  height: 400px;
+  background-color: #d0c8c8;
+  margin: 20px;
+  border-radius: 11px;
+}
