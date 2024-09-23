@@ -6,6 +6,9 @@ import Shimmer from "./Shimmer";
 const Body = () => {
     //Local State Variable - useState() -> this is a react hook
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
+    const [filteredRestaurant, setFiteredRestaurant] = useState([]);
+
+    const [searchText, setSearchText] = useState("") 
 
     useEffect (() => {
         fetchData();
@@ -25,6 +28,11 @@ const Body = () => {
             json?.data?.success?.cards[1]?.card?.card.gridElements.infoWithStyle
               .restaurants
           );
+
+          setFiteredRestaurant(
+            json?.data?.success?.cards[1]?.card?.card.gridElements.infoWithStyle
+              .restaurants
+          );
     };
 
     // //Coditional Rendering
@@ -35,14 +43,30 @@ const Body = () => {
     //         <Shimmer />
     //     )
     // }
+    console.log('re rendered')
 
     return (listOfRestaurants.length === 0) ? <Shimmer /> : (
         <div className="body">
             <div className="filter">
+                <div className="search">
+                    <input type="text" className="searcg-box" value={searchText} onChange={(e) => {
+                        setSearchText(e.target.value)
+                    }}/>
+                    <button 
+                    onClick={() => {
+                        //Filter the restaurant cards and update the UI
+                        //searchText
+
+                        const filteredRestaurant = listOfRestaurants.filter((res) =>
+                            res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                        );
+                        setFiteredRestaurant(filteredRestaurant);
+                    }}>Search</button>
+                </div>
                 <button className="filter-btn" 
                 onClick={() => {
                     const filteredList = listOfRestaurants.filter(
-                        (res) => res.data.avgRating > 4)
+                        (res) => res.info.avgRating > 4.5)
                         ;
                         setListOfRestaurants(filteredList);
                     
@@ -54,7 +78,7 @@ const Body = () => {
             </div> */}
                 <div className="restaurant-container"> 
                     {/* When we use .map -> We need to make sure to add a unique key value */}
-                    {listOfRestaurants.map((restaurant) => (
+                    {filteredRestaurant.map((restaurant) => (
                         <RestaurantCard key={restaurant.info.id} resData = {restaurant} />
                     ))}
                 </div>
