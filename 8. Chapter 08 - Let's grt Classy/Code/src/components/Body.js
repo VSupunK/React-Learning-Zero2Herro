@@ -17,28 +17,33 @@ const Body = () => {
 
     const fetchData = async () => {
         const data = await fetch(
-            //"https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.624480699999999&page_type=DESKTOP_WEB_LISTING" this is not working for this app
-            "https://www.swiggy.com/api/seo/getListing?lat=12.960059122809971&lng=77.57337538383284&isDineoutCollection=false"
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.624480699999999&page_type=DESKTOP_WEB_LISTING" 
+            // "https://www.swiggy.com/api/seo/getListing?lat=12.960059122809971&lng=77.57337538383284&isDineoutCollection=false" //this is not working for this app
         );
 
         const json = await data.json();
 
-        console.log(json);
+        
         setListOfRestaurants(
             //Optional Chaining
-            json?.data?.success?.cards[1]?.card?.card.gridElements.infoWithStyle
-              .restaurants
+            // json?.data?.success?.cards[1]?.card?.card.gridElements.infoWithStyle
+            //   .restaurants
+            json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
           );
+          
 
           setFiteredRestaurant(
-            json?.data?.success?.cards[1]?.card?.card.gridElements.infoWithStyle
-              .restaurants
+            json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
           );
     };
 
     console.log('re rendered')
 
-    return (listOfRestaurants.length === 0) ? <Shimmer /> : (
+    if (listOfRestaurants.length === 0) {
+        <Shimmer />
+    }
+
+    return (
         <div className="body">
             <div className="filter">
                 <div className="search">
@@ -81,3 +86,4 @@ const Body = () => {
 }
 
 export default Body;
+
