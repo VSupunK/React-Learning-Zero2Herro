@@ -71,3 +71,10 @@
 .filter{
   display: flex;
 }
+
+.user-card {
+  margin: 15px;
+  padding: 10px;
+  border: solid black 1px;
+  width: fit-content;
+}
