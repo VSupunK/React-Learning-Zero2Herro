@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,10 +9,12 @@ import Cart from "./components/Cart";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 
-
-
-
-
+//Chuking 
+//code splitting
+//dynamic bundling
+//lazy loading
+//on demand loading
+const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
     return (
@@ -39,6 +41,10 @@ const AppRouter = createBrowserRouter([
             {
                 path: '/contact',
                 element: <Contact />,
+            },
+            {
+                path: '/grocery',
+                element: <Suspense><Grocery /></Suspense>,
             },
             {
                 path: '/cart',
