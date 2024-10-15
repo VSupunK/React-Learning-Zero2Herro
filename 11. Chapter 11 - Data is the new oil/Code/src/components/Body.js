@@ -19,7 +19,7 @@ const Body = () => {
 
     const fetchData = async () => {
         const data = await fetch(
-            RES_API //This is the restaurant API from "../utils/constants"
+            {RES_API} //This is the restaurant API from "../utils/constants"
         );
 
         const json = await data.json();
