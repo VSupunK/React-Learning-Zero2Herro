@@ -19,7 +19,7 @@ const Body = () => {
 
     const fetchData = async () => {
         const data = await fetch(
-            {RES_API} //This is the restaurant API from "../utils/constants"
+            RES_API //This is the restaurant API from "../utils/constants"
         );
 
         const json = await data.json();
@@ -33,6 +33,8 @@ const Body = () => {
           setFiteredRestaurant(
             json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
           );
+
+          console.log(json?.data?.cards[1])
     };
    
     
@@ -84,7 +86,9 @@ const Body = () => {
                 <div className="flex flex-wrap justify-center gap-4"> 
                     {/* When we use .map -> We need to make sure to add a unique key value */}
                     {filteredRestaurant.map((restaurant) => (
-                        <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}> <RestaurantCard  resData = {restaurant} /></Link>
+                        <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}> 
+                        {/* If the restaurant is promoted then add a promoted label to it */}
+                        <RestaurantCard  resData = {restaurant} /></Link>
                     ))}
                 </div>
             
