@@ -8,7 +8,7 @@ const RestaurantCard = (props) => {
     const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData?.info;
     const { deliveryTime } = resData?.info?.sla;
     return (
-        <div className="m-[5px] p-[15px] w-[250px] bg-orange-100 rounded-lg hover:bg-emerald-200 hover:shadow-xl hover:scale-[1.1] hover:duration-100">
+        <div className="m-[5px] p-[15px] w-[250px] h-[475px] bg-orange-100 rounded-lg hover:bg-emerald-200 hover:shadow-xl hover:scale-[1.1] hover:duration-100">
             {/* This image come from as a CDN - Content Delivery Network */}
             <div className="">
             <img className="object-cover h-48 w-96 rounded-lg shadow-2xl shadow-black" src=
@@ -34,12 +34,20 @@ const RestaurantCard = (props) => {
 
 export const withOpenedRestaurantLabel = (RestaurantCard) => {
     return (props) => {
+        // Determine if the restaurant is open
+        const isOpen = props.resData.info.isOpen;
+
         return (
-            <div>
-                <label>Opened</label>
-                <RestaurantCard {...props}/>
+            <div className="relative">
+                <label 
+                    className={`absolute text-white p-2 rounded-lg 
+                    ${isOpen ? 'bg-green-500' : 'bg-red-500'}`}
+                >
+                    {isOpen ? 'Opened' : 'Closed'}
+                </label>
+                <RestaurantCard {...props} />
             </div>
-        )
+        );
     }
 }
 
