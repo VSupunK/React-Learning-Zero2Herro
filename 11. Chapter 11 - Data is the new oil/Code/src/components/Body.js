@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withOpenedRestaurantLabel} from "./RestaurantCard";
 //import resList from "../utils/mockData";
 import { useEffect, useState } from 'react';
 import Shimmer from "./Shimmer";
@@ -12,6 +12,8 @@ const Body = () => {
     const [filteredRestaurant, setFiteredRestaurant] = useState([]);
 
     const [searchText, setSearchText] = useState("") 
+
+    const OpenedRestaurantCard = withOpenedRestaurantLabel(RestaurantCard);
 
     useEffect (() => {
         fetchData();
@@ -33,8 +35,6 @@ const Body = () => {
           setFiteredRestaurant(
             json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
           );
-
-          console.log(json?.data?.cards[1])
     };
    
     
@@ -49,29 +49,40 @@ const Body = () => {
         <Shimmer />
     }
 
+    // Function to handle search logic
+    const handleSearch = () => {
+        const filteredRestaurant = listOfRestaurants.filter((res) =>
+            res.info.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setFiteredRestaurant(filteredRestaurant);
+    };
+
+
     return (
         <div className="body">
             <div className="filter flex items-center">
-                <div className="search m-2 p-4">
-                    <input type="text" className="border border-solid border-black rounded-sm" value={searchText} onChange={(e) => {
-                        setSearchText(e.target.value)
-                    }}/>
+            <div className="search m-2 p-4">
+                    <input 
+                        type="text" 
+                        className="border border-solid border-black rounded-sm" 
+                        value={searchText} 
+                        onChange={(e) => setSearchText(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                handleSearch(); // Trigger search on Enter key press
+                            }
+                        }}
+                    />
                     <button className="ml-5 px-4 hover:bg-gray-400 rounded-md bg-blue-400 hover:text-white"
-                    onClick={() => {
-                        //Filter the restaurant cards and update the UI
-                        //searchText
-
-                        const filteredRestaurant = listOfRestaurants.filter((res) =>
-                            res.info.name.toLowerCase().includes(searchText.toLowerCase())
-                        );
-                        setFiteredRestaurant(filteredRestaurant);
-                    }}>Search</button>
+                    onClick={handleSearch}> {/* Trigger search on button click */}
+                        Search
+                    </button>
                 </div>
                 <div className="m-2 p-4">
                 <button className="px-4 hover:bg-gray-400 rounded-md bg-green-500 hover:text-white" 
                 onClick={() => {
                     const filteredList = listOfRestaurants.filter(
-                        (res) => res.info.avgRating > 4.5)
+                        (res) => res.info.avgRating > 4.6)
                         ;
                         setListOfRestaurants(filteredList);
                     
@@ -87,13 +98,17 @@ const Body = () => {
                     {/* When we use .map -> We need to make sure to add a unique key value */}
                     {filteredRestaurant.map((restaurant) => (
                         <Link key={restaurant.info.id} to={"/restaurant/" + restaurant.info.id}> 
+                        
                         {/* If the restaurant is promoted then add a promoted label to it */}
-                        <RestaurantCard  resData = {restaurant} /></Link>
+                        {restaurant.info.isOpen ? (<OpenedRestaurantCard  resData = {restaurant} />) : (<RestaurantCard  resData = {restaurant} />)}
+
+                        {/* <RestaurantCard  resData = {restaurant} /> */}
+
+                        </Link>
                     ))}
                 </div>
             
-        </div>
-    )
+        </div>)
 }
 
 export default Body;
