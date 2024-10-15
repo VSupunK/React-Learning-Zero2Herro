@@ -1,6 +1,6 @@
-# Before starting the app, we need to allow CORS by using `Allow CORS Extension`.
+## Before starting the app, we need to allow CORS by using `Allow CORS Extension`.
 
-# Bus we can't do always because when we use this app on onther computer, we will have to install this extension again. Therefore we can you `CORSProxy.io`.  
+## But we can't do always because when we use this app on onther computer, we will have to install this extension again. Therefore we can you `CORSProxy.io`.  
 
 - How to use?
     "https://corsproxy.io?-------API link----------"
