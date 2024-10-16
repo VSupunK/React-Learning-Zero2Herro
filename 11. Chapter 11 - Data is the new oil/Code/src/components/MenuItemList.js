@@ -1,8 +1,8 @@
 import React from "react";
 import { FaIndianRupeeSign } from "react-icons/fa6";
+import { CDN_URL } from "../utils/constants";
 
 const MenuItemList = (items) => {
-  console.log(items.items?.card?.info.id);
   return (
     <div>
         {items.items.map((item) => (
@@ -12,8 +12,17 @@ const MenuItemList = (items) => {
                 <div className="flex gap-1 items-center bg-green-400 py-1 px-4 rounded-full"><label className="font-bold">{item.card.info.price ? item.card.info.price / 100 : item.card.info.defaultPrice / 100}</label>
                 <FaIndianRupeeSign />
                 </div>
+                
             </div>
-            <p className="text-md text-left">{item.card.info.description}</p>
+            <div className="flex gap-10">
+            <img src={CDN_URL + item.card.info.imageId} className="object-cover w-[150px] h-[150px] rounded-full"></img>
+            <div className="justify-start">
+              <p className="text-md text-left">{item.card.info.description}</p>
+              <button className=" bg-green-800 border-black text-white px-4 py-2 rounded-lg">Add+</button>
+            </div>
+            
+            </div>
+            
         </div>
       ))}
       
