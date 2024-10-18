@@ -28,7 +28,7 @@ const Header = () => {
                 }}>
                     {btnNameReact}
                 </button>
-                <li><Link to='/'>{loggedInUser}</Link></li>
+                <li className='font-bold'><Link to='/'>{loggedInUser}</Link></li>
 
             </ul>
         </div>
