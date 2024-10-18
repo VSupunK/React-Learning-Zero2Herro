@@ -18,7 +18,7 @@ const MenuItemList = (items) => {
             <img src={CDN_URL + item.card.info.imageId} className="object-cover w-[150px] h-[150px] rounded-full"></img>
             <div className="justify-start">
               <p className="text-md text-left">{item.card.info.description}</p>
-              <button className=" bg-green-800 border-black text-white px-4 py-2 rounded-lg">Add+</button>
+              <button className=" bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-green-800">Add+</button>
             </div>
             
             </div>
